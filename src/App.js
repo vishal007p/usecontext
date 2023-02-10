@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from 'react';
+import Child from './Child';
+import OtherChild from './OtherChild';
+export const GlobalInfo = createContext();
+
 
 function App() {
+
+  const [color, useColor] = useState("green");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalInfo.Provider value={{appcolor:color}}>
+
+
+      <div>
+        <h1>App Component</h1>
+        <Child />
+        <OtherChild/>
+      </div>
+    </GlobalInfo.Provider>
   );
 }
 
